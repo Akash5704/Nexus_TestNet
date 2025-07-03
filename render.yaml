@@ -1,0 +1,25 @@
+# render.yaml - Render deployment configuration
+services:
+  - type: web
+    name: nexus-testnet-node
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter
+    region: oregon
+    branch: main
+    buildCommand: ""
+    startCommand: ""
+    healthCheckPath: "/health"
+    envVars:
+      - key: NODE_ID
+        value: "12255550"
+      - key: RUST_LOG  
+        value: "info"
+      - key: PORT
+        value: "8080"
+    
+    # Resource limits
+    disk:
+      name: nexus-data
+      mountPath: /data
+      sizeGB: 10
