@@ -12,7 +12,7 @@ services:
     # healthCheckPath: "/health"  # Commented out - blockchain nodes typically don't have health endpoints
     envVars:
       - key: NODE_ID
-        value: "12255550"
+        value: "11874082"
       - key: RUST_LOG  
         value: "info"
       - key: PORT
