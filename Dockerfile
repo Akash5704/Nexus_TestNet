@@ -1,8 +1,5 @@
-# Nexus Network Testnet Dockerfile
-FROM ubuntu:22.04
-
-# Prevent interactive prompts during installation
-ENV DEBIAN_FRONTEND=noninteractive
+# Nexus Network Testnet Dockerfile - Debian Latest
+FROM debian:bookworm-slim
 
 # Install system dependencies
 RUN apt-get update && \
@@ -24,10 +21,10 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 RUN rustup target add riscv32i-unknown-none-elf
 
 # Install Nexus CLI
-RUN curl https://cli.nexus.xyz/ | sh
+RUN curl -fsSL https://cli.nexus.xyz/ | sh
 
-# Make sure nexus is in PATH
-ENV PATH="/root/.nexus:${PATH}"
+# Add nexus binaries to PATH
+ENV PATH="/root/.nexus:/root/.nexus/bin:/root/.cargo/bin:${PATH}"
 
 # Set working directory
 WORKDIR /app
@@ -36,11 +33,11 @@ WORKDIR /app
 COPY start.sh /app/start.sh
 RUN chmod +x /app/start.sh
 
-# Expose port (adjust if needed)
+# Expose port
 EXPOSE 8080
 
 # Set environment variables
-ENV NODE_ID="11874082"
+ENV NODE_ID=""
 ENV RUST_LOG=info
 
 # Start the node
