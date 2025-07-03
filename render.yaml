@@ -9,7 +9,7 @@ services:
     branch: main
     buildCommand: ""
     startCommand: ""
-    healthCheckPath: "/health"
+    # healthCheckPath: "/health"  # Commented out - blockchain nodes typically don't have health endpoints
     envVars:
       - key: NODE_ID
         value: "12255550"
