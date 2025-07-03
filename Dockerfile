@@ -40,7 +40,7 @@ RUN chmod +x /app/start.sh
 EXPOSE 8080
 
 # Set environment variables
-ENV NODE_ID=""
+ENV NODE_ID="11874082"
 ENV RUST_LOG=info
 
 # Start the node
